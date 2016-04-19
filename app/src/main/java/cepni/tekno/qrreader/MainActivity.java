@@ -26,6 +26,7 @@ public class MainActivity extends AppCompatActivity {
         button.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
+                textView.setText("");
                 IntentIntegrator integrator = new IntentIntegrator(MainActivity.this);
                 integrator.setCaptureActivity(CaptureActivityAnyOrientation.class);
                 integrator.setOrientationLocked(false);
