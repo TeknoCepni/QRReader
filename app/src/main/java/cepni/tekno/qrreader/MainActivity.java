@@ -13,7 +13,6 @@ import com.google.zxing.integration.android.IntentIntegrator;
 import com.google.zxing.integration.android.IntentResult;
 
 import java.util.ArrayList;
-import java.util.Arrays;
 
 
 public class MainActivity extends AppCompatActivity {
@@ -27,11 +26,7 @@ public class MainActivity extends AppCompatActivity {
 
         ListView listView = (ListView)findViewById(R.id.listView);
 
-        String dataList[] = new String []{""};
-        ArrayList<String> list = new ArrayList<String>();
-        list.addAll( Arrays.asList(dataList) );
-
-        adapter = new ArrayAdapter<String>(this,android.R.layout.simple_list_item_1,list);
+        adapter = new ArrayAdapter<String>(this,android.R.layout.simple_list_item_1,new ArrayList<String>());
 
         listView.setAdapter(adapter);
 
