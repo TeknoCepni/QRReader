@@ -14,20 +14,19 @@ import com.google.zxing.integration.android.IntentResult;
 
 public class MainActivity extends AppCompatActivity {
 
-    Activity activity;
+
     TextView textView;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
-        activity = this;
 
         textView = (TextView)findViewById(R.id.textView_value);
         Button button = (Button)findViewById(R.id.button);
         button.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                IntentIntegrator integrator = new IntentIntegrator(activity);
+                IntentIntegrator integrator = new IntentIntegrator(MainActivity.this);
                 integrator.setCaptureActivity(CaptureActivityAnyOrientation.class);
                 integrator.setOrientationLocked(false);
                 integrator.initiateScan();
