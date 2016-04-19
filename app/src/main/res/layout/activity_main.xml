@@ -13,7 +13,7 @@
     <Button
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="Read QR Code"
+        android:text="@string/button_title"
         android:id="@+id/button"
         android:layout_alignParentTop="true"
         android:layout_alignParentLeft="true"
@@ -24,10 +24,10 @@
     <TextView
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="Read Value"
+        android:text="@string/listview_title"
         android:textStyle="bold"
         android:id="@+id/textView"
-        android:textSize="30dp"
+        android:textSize="30sp"
         android:layout_below="@+id/button"
         android:layout_centerHorizontal="true" />
 
