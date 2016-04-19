@@ -13,28 +13,33 @@
     <Button
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="Oku"
+        android:text="Read QR Code"
         android:id="@+id/button"
         android:layout_alignParentTop="true"
-        android:layout_centerHorizontal="true"
-        android:layout_marginTop="124dp" />
+        android:layout_alignParentLeft="true"
+        android:layout_alignParentStart="true"
+        android:layout_alignParentRight="true"
+        android:layout_alignParentEnd="true" />
 
     <TextView
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="Okunan Değer"
+        android:text="Read Value"
+        android:textStyle="bold"
         android:id="@+id/textView"
+        android:textSize="30dp"
         android:layout_below="@+id/button"
-        android:layout_centerHorizontal="true"
-        android:layout_marginTop="87dp"
-        android:textSize="30dp" />
+        android:layout_centerHorizontal="true" />
 
-    <TextView
+    <ListView
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="deger"
-        android:id="@+id/textView_value"
+        android:id="@+id/listView"
         android:layout_below="@+id/textView"
-        android:layout_centerHorizontal="true"
-        android:textSize="20dp" />
+        android:layout_alignParentLeft="true"
+        android:layout_alignParentStart="true"
+        android:layout_alignParentBottom="true"
+        android:layout_alignParentRight="true"
+        android:layout_alignParentEnd="true" />
+
 </RelativeLayout>

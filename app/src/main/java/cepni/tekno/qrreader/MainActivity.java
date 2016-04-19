@@ -1,32 +1,44 @@
 package cepni.tekno.qrreader;
 
-import android.app.Activity;
 import android.content.Intent;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.view.View;
+import android.widget.ArrayAdapter;
 import android.widget.Button;
-import android.widget.TextView;
+import android.widget.ListView;
+
 
 import com.google.zxing.integration.android.IntentIntegrator;
 import com.google.zxing.integration.android.IntentResult;
 
+import java.util.ArrayList;
+import java.util.Arrays;
+
 
 public class MainActivity extends AppCompatActivity {
 
+    ArrayAdapter<String> adapter;
 
-    TextView textView;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
 
-        textView = (TextView)findViewById(R.id.textView_value);
+        ListView listView = (ListView)findViewById(R.id.listView);
+
+        String dataList[] = new String []{""};
+        ArrayList<String> list = new ArrayList<String>();
+        list.addAll( Arrays.asList(dataList) );
+
+        adapter = new ArrayAdapter<String>(this,android.R.layout.simple_list_item_1,list);
+
+        listView.setAdapter(adapter);
+
         Button button = (Button)findViewById(R.id.button);
         button.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                textView.setText("");
                 IntentIntegrator integrator = new IntentIntegrator(MainActivity.this);
                 integrator.setCaptureActivity(CaptureActivityAnyOrientation.class);
                 integrator.setOrientationLocked(false);
@@ -42,8 +54,8 @@ public class MainActivity extends AppCompatActivity {
 
         if ((scanResult != null) && (scanResult.getContents() != null)) {
             String data = scanResult.getContents();
-
-            textView.setText(data);
+            adapter.add(data);
+            adapter.notifyDataSetChanged();
         } else {
 
         }
