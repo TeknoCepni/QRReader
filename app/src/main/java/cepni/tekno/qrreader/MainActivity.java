@@ -7,6 +7,7 @@ import android.view.View;
 import android.widget.ArrayAdapter;
 import android.widget.Button;
 import android.widget.ListView;
+import android.widget.Toast;
 
 
 import com.google.zxing.integration.android.IntentIntegrator;
@@ -51,8 +52,9 @@ public class MainActivity extends AppCompatActivity {
             String data = scanResult.getContents();
             adapter.add(data);
             adapter.notifyDataSetChanged();
+            Toast.makeText(MainActivity.this,R.string.toast_read,Toast.LENGTH_LONG).show();
         } else {
-
+            Toast.makeText(MainActivity.this,R.string.toast_notread,Toast.LENGTH_LONG).show();
         }
     }
 }

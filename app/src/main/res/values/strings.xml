@@ -2,4 +2,8 @@
     <string name="app_name">QR Code Reader</string>
     <string name="button_title">Read QR Code</string>
     <string name="listview_title">Read Values</string>
+
+    <string name="toast_read">Qr Code Read!</string>
+    <string name="toast_notread">Qr Code Not Read!</string>
+
 </resources>
