@@ -48,7 +48,7 @@ public class MainActivity extends AppCompatActivity {
             public boolean onItemLongClick(AdapterView<?> parent, View view, int position, long id) {
                 adapter.remove(adapter.getItem(position));
                 adapter.notifyDataSetChanged();
-                Toast.makeText(MainActivity.this,"Qr Silindi!",Toast.LENGTH_SHORT).show();
+                Toast.makeText(MainActivity.this,R.string.qr_remove,Toast.LENGTH_SHORT).show();
                 controlAdapterIsEmpty();
                 return false;
             }
