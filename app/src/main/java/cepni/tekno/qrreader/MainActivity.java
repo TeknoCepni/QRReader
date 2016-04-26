@@ -48,11 +48,15 @@ public class MainActivity extends AppCompatActivity {
         listView.setOnItemLongClickListener(new AdapterView.OnItemLongClickListener() {
             @Override
             public boolean onItemLongClick(AdapterView<?> parent, View view, int position, long id) {
-                adapter.remove(adapter.getItem(position));
-                addedHistory.remove(position);
-                adapter.notifyDataSetChanged();
-                Toast.makeText(MainActivity.this,R.string.qr_remove,Toast.LENGTH_SHORT).show();
-                controlAdapterIsEmpty();
+                if(!adapter.isEmpty() && !addedHistory.isEmpty())
+                {
+                    adapter.remove(adapter.getItem(position));
+                    addedHistory.remove(position);
+                    adapter.notifyDataSetChanged();
+                    Toast.makeText(MainActivity.this,R.string.qr_remove,Toast.LENGTH_SHORT).show();
+                    controlAdapterIsEmpty();
+                }
+
                 return false;
             }
         });
