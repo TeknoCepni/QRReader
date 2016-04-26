@@ -4,6 +4,7 @@ import android.content.Intent;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.view.View;
+import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
 import android.widget.Button;
 import android.widget.ListView;
@@ -41,6 +42,18 @@ public class MainActivity extends AppCompatActivity {
                 integrator.initiateScan();
             }
         });
+
+        listView.setOnItemLongClickListener(new AdapterView.OnItemLongClickListener() {
+            @Override
+            public boolean onItemLongClick(AdapterView<?> parent, View view, int position, long id) {
+                adapter.remove(adapter.getItem(position));
+                adapter.notifyDataSetChanged();
+                Toast.makeText(MainActivity.this,"Qr Silindi!",Toast.LENGTH_SHORT).show();
+                controlAdapterIsEmpty();
+                return false;
+            }
+        });
+
     }
 
 
@@ -52,9 +65,9 @@ public class MainActivity extends AppCompatActivity {
             String data = scanResult.getContents();
             adapter.add(data);
             adapter.notifyDataSetChanged();
-            Toast.makeText(MainActivity.this,R.string.toast_read,Toast.LENGTH_LONG).show();
+            Toast.makeText(MainActivity.this,R.string.toast_read,Toast.LENGTH_SHORT).show();
         } else {
-            Toast.makeText(MainActivity.this,R.string.toast_notread,Toast.LENGTH_LONG).show();
+            Toast.makeText(MainActivity.this,R.string.toast_notread,Toast.LENGTH_SHORT).show();
         }
         controlAdapterIsEmpty();
     }

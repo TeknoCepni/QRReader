@@ -7,5 +7,5 @@
     <string name="toast_notread">Qr Code Not Read!</string>
 
     <string name="adapter_empty">There is no data. We are sorry. :(</string>
-
+    <string name="qr_remove">QR Code removed.</string>
 </resources>
