@@ -30,7 +30,7 @@ public class MainActivity extends AppCompatActivity {
         adapter = new ArrayAdapter<String>(this,android.R.layout.simple_list_item_1,new ArrayList<String>());
 
         listView.setAdapter(adapter);
-
+        controlAdapterIsEmpty();
         Button button = (Button)findViewById(R.id.button);
         button.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -56,5 +56,19 @@ public class MainActivity extends AppCompatActivity {
         } else {
             Toast.makeText(MainActivity.this,R.string.toast_notread,Toast.LENGTH_LONG).show();
         }
+        controlAdapterIsEmpty();
+    }
+
+    /*
+    * Adapter control. Write message if is empty.
+    * */
+    public void controlAdapterIsEmpty()
+    {
+        if(adapter.isEmpty())
+            adapter.add(getString(R.string.adapter_empty));
+        else
+            adapter.remove(getString(R.string.adapter_empty));
+
+        adapter.notifyDataSetChanged();
     }
 }
