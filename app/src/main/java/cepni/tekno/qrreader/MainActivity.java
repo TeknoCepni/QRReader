@@ -14,13 +14,15 @@ import android.widget.Toast;
 import com.google.zxing.integration.android.IntentIntegrator;
 import com.google.zxing.integration.android.IntentResult;
 
+import java.text.SimpleDateFormat;
 import java.util.ArrayList;
+import java.util.Date;
 
 
 public class MainActivity extends AppCompatActivity {
 
     ArrayAdapter<String> adapter;
-
+    ArrayList<String> addedHistory;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -29,7 +31,7 @@ public class MainActivity extends AppCompatActivity {
         ListView listView = (ListView)findViewById(R.id.listView);
 
         adapter = new ArrayAdapter<String>(this,android.R.layout.simple_list_item_1,new ArrayList<String>());
-
+        addedHistory = new ArrayList<String>();
         listView.setAdapter(adapter);
         controlAdapterIsEmpty();
         Button button = (Button)findViewById(R.id.button);
@@ -47,10 +49,18 @@ public class MainActivity extends AppCompatActivity {
             @Override
             public boolean onItemLongClick(AdapterView<?> parent, View view, int position, long id) {
                 adapter.remove(adapter.getItem(position));
+                addedHistory.remove(position);
                 adapter.notifyDataSetChanged();
                 Toast.makeText(MainActivity.this,R.string.qr_remove,Toast.LENGTH_SHORT).show();
                 controlAdapterIsEmpty();
                 return false;
+            }
+        });
+
+        listView.setOnItemClickListener(new AdapterView.OnItemClickListener() {
+            @Override
+            public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
+                Toast.makeText(MainActivity.this,addedHistory.get(position),Toast.LENGTH_LONG).show();
             }
         });
 
@@ -64,6 +74,7 @@ public class MainActivity extends AppCompatActivity {
         if ((scanResult != null) && (scanResult.getContents() != null)) {
             String data = scanResult.getContents();
             adapter.add(data);
+            addHistory();
             adapter.notifyDataSetChanged();
             Toast.makeText(MainActivity.this,R.string.toast_read,Toast.LENGTH_SHORT).show();
         } else {
@@ -83,5 +94,15 @@ public class MainActivity extends AppCompatActivity {
             adapter.remove(getString(R.string.adapter_empty));
 
         adapter.notifyDataSetChanged();
+    }
+
+    /*
+    * Add history when qr code read.
+    * */
+    public void addHistory()
+    {
+
+        SimpleDateFormat sdf = new SimpleDateFormat("yyyy.MM.dd_HH:mm:ss");
+        addedHistory.add(getString(R.string.qr_added_history)+" "+sdf.format(new Date()));
     }
 }

@@ -8,4 +8,5 @@
 
     <string name="adapter_empty">There is no data. We are sorry. :(</string>
     <string name="qr_remove">QR Code removed.</string>
+    <string name="qr_added_history">Added History:</string>
 </resources>
